@@ -1,16 +1,16 @@
 
 
-libname in "Q:\mynd\kibi\SC_work\spr.27.3a4\2024_spr.27.3a4_RDBES_combined\boot\data\data_from_last_year";
-libname out "Q:\mynd\kibi\SC_work\spr.27.3a4\2024_spr.27.3a4_RDBES_combined\data";
+libname in "C:\Users\kibi\OneDrive - Danmarks Tekniske Universitet\stock_coord_work\spr.27.3a4\2025_spr.27.3a4_RDBES_combined\boot\data\data_from_last_year";
+libname out "C:\Users\kibi\OneDrive - Danmarks Tekniske Universitet\stock_coord_work\spr.27.3a4\2025_spr.27.3a4_RDBES_combined\data";
 
-%let path = Q:\mynd\kibi\SC_work\spr.27.3a4\2024_spr.27.3a4_RDBES_combined\data;
+%let path = C:\Users\kibi\OneDrive - Danmarks Tekniske Universitet\stock_coord_work\spr.27.3a4\2025_spr.27.3a4_RDBES_combined\data;
 
-%let year = 2023;
+%let year = 2024;
 
 *ALK;
 
 PROC IMPORT OUT= WORK.alk
-            DATAFILE= "&path.\alk_samples_original_format_no_dnk_2023_2024.csv" 
+            DATAFILE= "&path.\alk_samples_original_format_no_dnk_2024_2025.csv" 
             DBMS=CSV REPLACE;
      GETNAMES=YES;
      DATAROW=2; 
@@ -37,7 +37,7 @@ select distinct year
 from alk;
 
 data old_alk;
-set in.norwegian_alk_2022;
+set in.norwegian_alk_2023;
 
 day=date-100*floor(date/100);
 month=(date-10000*floor(date/10000)-day)/100;
@@ -60,7 +60,7 @@ group by year;
 *LD;
 
 PROC IMPORT OUT = work.ld
-            DATAFILE= "&path.\ld_samples_original_format_no_dnk_2023_2024.csv" 
+            DATAFILE= "&path.\ld_samples_original_format_no_dnk_2024_2025.csv" 
             DBMS=CSV REPLACE;
      GETNAMES=YES;
      DATAROW=2; 
@@ -88,7 +88,7 @@ select distinct year
 from ld;
 
 data old_ld;
-set in.norwegian_length_2022; *Wronag naming in 2022;
+set in.norwegian_length_2023; *Wronag naming in 2022;
 
 day=date-100*floor(date/100);
 month=(date-10000*floor(date/10000)-day)/100;
@@ -110,8 +110,8 @@ group by year;
 
 *Landings per square;
 
-PROC IMPORT OUT= out.catch_square_2002_2024
-            DATAFILE= "&path.\catches_square_2002_2024.csv" 
+PROC IMPORT OUT= out.catch_square_2002_2025
+            DATAFILE= "&path.\catches_square_2002_2025.csv" 
             DBMS=CSV REPLACE;
      GETNAMES=YES;
      DATAROW=2; 
