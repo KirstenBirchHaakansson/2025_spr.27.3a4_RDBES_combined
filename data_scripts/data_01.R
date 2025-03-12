@@ -8,8 +8,8 @@ library(stringr)
 mkdir("data")
 
 
-bel_file <- "BE_2025 DC HAWG spr.27.4 BEL landings.xls"
-deu_file <- "DE_2025 DC HAWG spr.27.4 DE landings.xls"
+bel_file <- "BE_2025 DC HAWG spr.27.4 BEL landings_v2.xls"
+deu_file <- "DE_2025 DC HAWG spr.27.4 DE landings_v2.xls"
 sco_file <-
   "2025 DC HAWG spr27.3a4 spr.27.67a-cf-k SCO exchange spreadsheet.xls"
 dnk_file <- "DC_Annex_HAWG2 sprat template_DNK_2023_2025.xlsx"
@@ -99,6 +99,7 @@ write.csv(cat_div_1,
           paste0("data/", "catches_div_2023_2025.csv"),
           row.names = F)
 
+# Check figures against submissions
 
 # Catch square ----
 
@@ -120,10 +121,16 @@ nld_cat_sq <-
   rename(nld_cat_sq, "Square" = "Statrec", "Catch_in_ton" = "Catch_in_tonnes")
 nor_cat_sq <-
   read_excel(paste0("boot/data/", nor_file), sheet = 3)[, c(1:5)] # bingo
+nor_cat_sq <-
+  rename(nor_cat_sq, "Square" = "Statrec", "Catch_in_ton" = "Catch_in_tonnes")
 dnk_cat_sq <-
   read_excel(paste0("boot/data/", dnk_file), sheet = 3)[, c(1:5)] # bingo
+dnk_cat_sq <-
+  rename(dnk_cat_sq, "Square" = "Statrec", "Catch_in_ton" = "Catch_in_tonnes")
 eng_cat_sq <-
   read_excel(paste0("boot/data/", eng_file), sheet = 3)[, c(1:5)] # bingo
+eng_cat_sq <-
+  rename(eng_cat_sq, "Square" = "Statrec", "Catch_in_ton" = "Catch_in_tonnes")
 # fra_cat_sq <- read_excel(paste0("boot/data/", fra_file), sheet=3)[, c(1:5)] # bingo
 
 names(bel_cat_sq)
@@ -146,7 +153,7 @@ cat_sq <-
     dnk_cat_sq,
     eng_cat_sq
   )
-cat_sq_1 <- subset(cat_sq, Year %in% c(2022, 2023, 2024))
+cat_sq_1 <- subset(cat_sq, Year %in% c(2023, 2024, 2025))
 
 head(cat_sq_1)
 
@@ -161,7 +168,7 @@ unique(cat_sq_1$Square)
 names(cat_sq_1) <- tolower(names(cat_sq_1))
 
 write.csv(cat_sq_1,
-          paste0("data/", "catches_square_2022_2024.csv"),
+          paste0("data/", "catches_square_2023_2025.csv"),
           row.names = F)
 
 ## combine new data with old
@@ -170,24 +177,24 @@ old_sq <-
   read.csv(
     paste0(
       "boot/data/data_from_last_year/",
-      "catches_square_2002_2023_2023-03-13.csv"
+      "catches_square_2002_2024.csv"
     ),
     sep = ","
   )
 names(old_sq) <- tolower(names(old_sq))
 unique(old_sq$year)
 
-distinct(cat_sq_1, country, year) # Only Danish data from 2022 and 2024
+distinct(cat_sq_1, country, year) # Only Danish data from 2023 and 2025
 distinct(old_sq, country, year)
 
 old_sq_1 <-
-  subset(old_sq,!(country == "DK" & year %in% c(2022, 2023)))
+  subset(old_sq,!(country == "DK" & year %in% c(2023, 2024)))
 distinct(old_sq_1, country, year)
 
 new_sq <- rbind(old_sq_1, cat_sq_1)
 
 write.csv(new_sq,
-          paste0("data/", "catches_square_2002_2024.csv"),
+          paste0("data/", "catches_square_2002_2025.csv"),
           row.names = F)
 
 # samples ALK ----
@@ -233,7 +240,7 @@ samp_alk <-
     quarter = quarter(Date)
   )
 
-samp_alk_1 <- subset(samp_alk, year %in% c(2022, 2023, 2024))
+samp_alk_1 <- subset(samp_alk, year %in% c(2023, 2024, 2025))
 
 unique(samp_alk_1$length_mm)
 
@@ -242,7 +249,7 @@ names(samp_alk_1)
 samp_alk_1 <- rename(samp_alk_1, c("noage4" = "noage4+"))
 
 write.csv(samp_alk_1,
-          paste0("data/", "alk_samples_2022_2024.csv"),
+          paste0("data/", "alk_samples_2023_2025.csv"),
           row.names = F)
 
 ## Output to Anna's script
@@ -253,7 +260,7 @@ samp_alk_a_1 <- subset(samp_alk_a, country != "DK")
 
 write.csv(
   samp_alk_a_1,
-  paste0("data/", "alk_samples_original_format_no_dnk_2023_2024.csv"),
+  paste0("data/", "alk_samples_original_format_no_dnk_2024_2025.csv"),
   row.names = F,
   na = ""
 )
@@ -279,12 +286,14 @@ nor_samp_ld <-
 nor_samp_ld$date_old <- nor_samp_ld$Date
 nor_samp_ld$Date <-
   as.Date(as.character(nor_samp_ld$Date), "%y%m%d")
+nor_samp_ld <- rename(nor_samp_ld, "ICESsq" = "Statrec")
 
 dnk_samp_ld <-
   read_excel(paste0("boot/data/", dnk_file), sheet = 5)[, c(1:6)] # bingo
 dnk_samp_ld$date_old <- dnk_samp_ld$Date
 dnk_samp_ld$Date <-
   as.Date(as.character(dnk_samp_ld$Date), "%Y%m%d")
+dnk_samp_ld <- rename(dnk_samp_ld, "ICESsq" = "Statrec")
 
 names(swe_samp_ld)
 names(nor_samp_ld)
@@ -303,14 +312,14 @@ samp_ld <-
     quarter = quarter(Date)
   )
 
-samp_ld_1 <- subset(samp_ld, year %in% c(2022, 2023, 2024))
+samp_ld_1 <- subset(samp_ld, year %in% c(2023, 2024, 2025))
 
 unique(samp_ld_1$length_mm)
 
 names(samp_ld_1) <- tolower(names(samp_ld_1))
 
 write.csv(samp_ld_1,
-          paste0("data/", "ld_samples_2022_2024.csv"),
+          paste0("data/", "ld_samples_2023_2025.csv"),
           row.names = F)
 
 ## Output to Anna's script
@@ -320,7 +329,7 @@ samp_ld_a_1 <- subset(samp_ld_1, country != "DK")
 
 write.csv(
   samp_ld_a_1,
-  paste0("data/", "ld_samples_original_format_no_dnk_2023_2024.csv"),
+  paste0("data/", "ld_samples_original_format_no_dnk_2024_2025.csv"),
   row.names = F
 )
 
