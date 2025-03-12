@@ -12,61 +12,35 @@ getwd()
 #            file = T,
 #            append = F)
 
-draft.data(data.files = "submitted_data/PL_DC_Annex_HAWG3 her.27.20-24_PL.xlsx",
+draft.data(data.files = "submitted_data/2025_NLD_HAWG Sprat template.xls",
            data.scripts = NULL,
            originator = "Data submitted to HAWG",
-           title = "Data from Poland",
+           title = "Data from the Nedtherlands",
            period = "2024",
            access = "Restricted",
            file = T,
            append = F)
 
-draft.data(data.files = "submitted_data/2025_DC_Annex_HAWG3 her.27.20-24_2024_GER.xlsx",
+draft.data(data.files = "submitted_data/BE_2025 DC HAWG spr.27.4 BEL landings.xls",
            data.scripts = NULL,
            originator = "Data submitted to HAWG",
-           title = "Data from Germany",
+           title = "Data from Belgium",
            period = "2024",
            access = "Restricted",
            file = T,
            append = T)
 
-draft.data(data.files = "submitted_data/NO_DC_Annex_HAWG3 her.27.20-24_NOR2024.xlsx",
+draft.data(data.files = "submitted_data/DC_Annex_HAWG2 sprat template 2025 UK EW.xls",
            data.scripts = NULL,
            originator = "Data submitted to HAWG",
-           title = "Data from Norway",
+           title = "Data from Englend Wales",
            period = "2024",
            access = "Restricted",
            file = T,
            append = T)
 
-draft.data(data.files = "submitted_data/NO_DC_Annex_HAWG3 her.27.20-24_NOR2024_v2.xlsx",
-           data.scripts = NULL,
-           originator = "Data corrected by Kirsten",
-           title = "Year corrected by Kirsten",
-           period = "2024",
-           access = "Restricted",
-           file = T,
-           append = T)
 
-draft.data(data.files = "submitted_data/DC_Annex_HAWG3 her.27.20-24_NOR2024_v3.xlsx",
-           data.scripts = NULL,
-           originator = "Data submitted to HAWG",
-           title = "Norway has included samples from the transfer area",
-           period = "2024",
-           access = "Restricted",
-           file = T,
-           append = T)
-
-draft.data(data.files = "submitted_data/DC_Annex_HAWG3 her.27.20-24_NOR2024_v4.xlsx",
-           data.scripts = NULL,
-           originator = "Data submitted to HAWG",
-           title = "Norway has correct units",
-           period = "2024",
-           access = "Restricted",
-           file = T,
-           append = T)
-
-draft.data(data.files = "submitted_data/DC_Annex_HAWG3 her.27.20-24 template_DNK_2024.xlsx",
+draft.data(data.files = "submitted_data/DC_Annex_HAWG2 sprat template_DNK_2023_2025.xlsx",
            data.scripts = NULL,
            originator = "Data submitted to HAWG",
            title = "Data from Denmark",
@@ -75,7 +49,34 @@ draft.data(data.files = "submitted_data/DC_Annex_HAWG3 her.27.20-24 template_DNK
            file = T,
            append = T)
 
-draft.data(data.files = "submitted_data/SE_2025 DC HAWG her.27.20-24 YellowSheet_v2.xlsx",
+draft.data(data.files = "submitted_data/DE_2025 DC HAWG spr.27.4 DE landings.xls",
+           data.scripts = NULL,
+           originator = "Data submitted to HAWG",
+           title = "Data from Germany",
+           period = "2024",
+           access = "Restricted",
+           file = T,
+           append = T)
+
+draft.data(data.files = "submitted_data/GB_2024 DC HAWG spr27.3a4 spr.27.67a-cf-k SCO exchange spreadsheet.xls",
+           data.scripts = NULL,
+           originator = "Data submitted to HAWG",
+           title = "Data from Scotland",
+           period = "2024",
+           access = "Restricted",
+           file = T,
+           append = T)
+
+draft.data(data.files = "submitted_data/NO_DC_Annex_HAWG2 sprat_NOR2024.xls",
+           data.scripts = NULL,
+           originator = "Data submitted to HAWG",
+           title = "Data from Norway",
+           period = "2024",
+           access = "Restricted",
+           file = T,
+           append = T)
+
+draft.data(data.files = "submitted_data/SE_2025 DC HAWG spr.27.3a4 YellowSheet.xls",
            data.scripts = NULL,
            originator = "Data submitted to HAWG",
            title = "Data from Sweden",
@@ -84,37 +85,22 @@ draft.data(data.files = "submitted_data/SE_2025 DC HAWG her.27.20-24 YellowSheet
            file = T,
            append = T)
 
-draft.data(data.files = "submitted_data/SE_2025 DC HAWG her.27.20-24 YellowSheet_v3.xlsx",
+draft.data(data.files = "data_from_last_year",
            data.scripts = NULL,
-           originator = "Kibi",
-           title = "Corrected a fleet without landings in 27.3.b.23",
-           period = "2024",
+           originator = "HAWG",
+           title = "Data from last years",
+           period = "2023",
            access = "Restricted",
            file = T,
            append = T)
 
-draft.data(data.files = "data_from_past_years",
+draft.data(data.files = "old_input_files",
            data.scripts = NULL,
-           originator = "Data from pasts years",
-           title = "Paste years",
-           period = "2020-2023",
-           access = "Restricted",
+           originator = "Anna",
+           title = "Files needed for the SAS script",
            file = T,
            append = T)
 
-draft.data(data.files = "imputations",
-           data.scripts = NULL,
-           originator = "Manual imputation",
-           title = "Imputations",
-           file = T,
-           append = T)
-
-draft.data(data.files = "split_data",
-           data.scripts = NULL,
-           originator = "Results needed for the split",
-           title = "Split data",
-           file = T,
-           append = T)
 # 
 # draft.data(data.files = "time_series",
 #            data.scripts = NULL,
