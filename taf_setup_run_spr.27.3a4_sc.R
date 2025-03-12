@@ -62,6 +62,15 @@ draft.data(data.files = "submitted_data/GB_2024 DC HAWG spr27.3a4 spr.27.67a-cf-
            data.scripts = NULL,
            originator = "Data submitted to HAWG",
            title = "Data from Scotland",
+           period = "2023",
+           access = "Restricted",
+           file = T,
+           append = T)
+
+draft.data(data.files = "submitted_data/2025 DC HAWG spr27.3a4 spr.27.67a-cf-k SCO exchange spreadsheet.xls",
+           data.scripts = NULL,
+           originator = "Data submitted to HAWG",
+           title = "Data from Scotland",
            period = "2024",
            access = "Restricted",
            file = T,
