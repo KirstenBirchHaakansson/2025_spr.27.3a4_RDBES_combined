@@ -1,6 +1,4 @@
 
-
-
 library(icesTAF)
 library(readxl)
 library(lubridate)
@@ -10,16 +8,16 @@ library(stringr)
 mkdir("data")
 
 
-bel_file <- "2024 DC HAWG spr.27.4 BEL landings.xls"
-deu_file <- "2024 DC HAWG spr.27.4 DE landings.xls"
+bel_file <- "BE_2025 DC HAWG spr.27.4 BEL landings.xls"
+deu_file <- "DE_2025 DC HAWG spr.27.4 DE landings.xls"
 sco_file <-
-  "2024 DC HAWG spr27.3a4 spr.27.67a-cf-k SCO exchange spreadsheet.xls"
-dnk_file <- "DC_Annex 7.1.2. HAWG Template_sprat_DNK_2022_2024.xlsx"
+  "GB_2024 DC HAWG spr27.3a4 spr.27.67a-cf-k SCO exchange spreadsheet.xls"
+dnk_file <- "DC_Annex_HAWG2 sprat template_DNK_2023_2025.xlsx"
 # ltu_file <- "DC_Annex_7.1.1. HAWG LTU_2020.xls" # Only herring
-nor_file <- "DC_Annex_7.1.2. HAWG Template_sprat_NOR2023.xls"
-swe_file <- "DC_Annex_HAWG2_SWE_spr.27.3a4_2023.xls"
-nld_file <- "2024_NLD_HAWG Sprat.xls"
-eng_file <- "UK_EW_2023 HAWG Template_sprat.xls"
+nor_file <- "NO_DC_Annex_HAWG2 sprat_NOR2024.xls"
+swe_file <- "SE_2025 DC HAWG spr.27.3a4 YellowSheet.xls"
+nld_file <- "2025_NLD_HAWG Sprat template.xls"
+eng_file <- "DC_Annex_HAWG2 sprat template 2025 UK EW.xls"
 # fra_file <- "FRA_2022.xls"
 
 
