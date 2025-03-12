@@ -30,6 +30,15 @@ draft.data(data.files = "submitted_data/BE_2025 DC HAWG spr.27.4 BEL landings.xl
            file = T,
            append = T)
 
+draft.data(data.files = "submitted_data/BE_2025 DC HAWG spr.27.4 BEL landings_v2.xls",
+           data.scripts = NULL,
+           originator = "Data submitted to HAWG corrected by kibi",
+           title = "Added a mising country code",
+           period = "2024",
+           access = "Restricted",
+           file = T,
+           append = T)
+
 draft.data(data.files = "submitted_data/DC_Annex_HAWG2 sprat template 2025 UK EW.xls",
            data.scripts = NULL,
            originator = "Data submitted to HAWG",
