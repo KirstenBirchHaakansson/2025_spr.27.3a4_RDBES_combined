@@ -1,8 +1,8 @@
 /**/
-libname in 'Q:\mynd\kibi\SC_work\spr.27.3a4\2024_spr.27.3a4_RDBES_combined\data';
-libname out 'Q:\mynd\kibi\SC_work\spr.27.3a4\2024_spr.27.3a4_RDBES_combined\model';
+libname in 'C:\Users\kibi\OneDrive - Danmarks Tekniske Universitet\stock_coord_work\spr.27.3a4\2025_spr.27.3a4_RDBES_combined\data';
+libname out 'C:\Users\kibi\OneDrive - Danmarks Tekniske Universitet\stock_coord_work\spr.27.3a4\2025_spr.27.3a4_RDBES_combined\model';
 
-%let path = Q:\mynd\kibi\SC_work\spr.27.3a4\2024_spr.27.3a4_RDBES_combined\model;
+%let path = C:\Users\kibi\OneDrive - Danmarks Tekniske Universitet\stock_coord_work\spr.27.3a4\2025_spr.27.3a4_RDBES_combined\model;
 
 *libname dis 'c:\ar\sas\coddist.'; *Not used;
 
@@ -163,15 +163,15 @@ quit;
 */
 
 data a2b;
-set in.catch_square_2002_2024;
+set in.catch_square_2002_2025;
 intsq='    ';
 intsq=square;
 ton=catch_in_ton;
 if country in ('DEN','DK') and year lt 2019 then delete;
 ****************REMOVE IN 2024************************;
 ****************Temporary fix for low catches and no samples**********;
-if year=2024 and quarter=1 then do;
-	quarter=4; year=2023;
+if year=2025 and quarter=1 then do;
+	quarter=4; year=2024;
 	end;
 run;
 
@@ -194,7 +194,7 @@ proc sort data=a2;
 by year quarter intsq;
 run;
 
-proc sort data=out.mean_weight_and_n_per_kg_2023 out=a3;
+proc sort data=out.mean_weight_and_n_per_kg_2024 out=a3;
 by year quarter intsq;
 run;
 
@@ -355,9 +355,11 @@ if year=2020 then IV=182.654;
 if year=2021 then IV=80.761;
 if year=2022 then IV=89.721+0.384; *OK;
 
-if year=2023 then IV=91.420 + 0.959; * Including 2024 landings;
+if year=2023 then IV=91.420; * Including 2024 landings; *2025 - updated and only 2023 landings;
 
-if year=2024 then IV=0; *2024 run - moved to Q4 2023;
+if year=2024 then IV=84.472; *2024 run - moved to Q4 2023; *2025 - updated 2024+2025 landings;
+
+if year=2025 then IV=0; *2025 run - moved to Q4 2024;
 
 
 *if year=2021 then IV=0.478;
@@ -476,7 +478,7 @@ run;
 
 data m15a;
 set m14;
-do year=1974 to 2024 by 1;
+do year=1974 to 2025 by 1;
 output;
 end;
 run;
@@ -1121,11 +1123,11 @@ run;
 
 data m28;
 set m27;
-if year ne 2023 then mw0=wmw0/n0;
-if year ne 2023 then mw1=wmw1/n1;
-if year ne 2023 then mw2=wmw2/n2;
-if year ne 2023 then mw3=wmw3/n3;
-if year ne 2023 then mw4=wmw4/n4;
+if year ne 2024 then mw0=wmw0/n0;
+if year ne 2024 then mw1=wmw1/n1;
+if year ne 2024 then mw2=wmw2/n2;
+if year ne 2024 then mw3=wmw3/n3;
+if year ne 2024 then mw4=wmw4/n4;
 if quarter=2 then mw1=w2mw1;
 if quarter=2 then mw2=w2mw2;
 if quarter=2 then mw3=w2mw3;
@@ -1201,7 +1203,7 @@ if div ne 'IV' then delete;
 run;
 
 proc export data=miv
-   outfile="&path.\Total_catch_in_numbers_and_mean_weight_benchmark_IV_no_Q2_2023.csv"
+   outfile="&path.\Total_catch_in_numbers_and_mean_weight_benchmark_IV_no_Q2_2024.csv"
    dbms=csv 
    replace;
 run;
@@ -1214,7 +1216,7 @@ if year lt 1974 then delete;
 run;
 
 proc export data=miiia
-   outfile="&path.\Total_catch_in_numbers_and_mean_weight_benchmark_NO_no_Q2_2023.csv"
+   outfile="&path.\Total_catch_in_numbers_and_mean_weight_benchmark_NO_no_Q2_2024.csv"
    dbms=csv 
    replace;
 run;
@@ -1278,10 +1280,10 @@ run;
 
 data m28;
 set m27;
-if year lt 2022 then mw0=wmw0/n0;
-if year lt 2022 then mw1=wmw1/n1;
-if year lt 2022 then mw2=wmw2/n2;
-if year lt 2022 then mw3=wmw3/n3;
+if year lt 2023 then mw0=wmw0/n0;
+if year lt 2023 then mw1=wmw1/n1;
+if year lt 2023 then mw2=wmw2/n2;
+if year lt 2023 then mw3=wmw3/n3;
 if quarter in (1,2) then  mw0=wmw0/n0;
 if quarter in (1,2) then  mw1=wmw1/n1;
 if quarter in (1,2) then  mw2=wmw2/n2;
@@ -1360,7 +1362,7 @@ if div ne 'IV' then delete;
 run;
 
 proc export data=miv
-   outfile="&path.\July_to_june_quarterly_catch_in_numbers_and_mean_weight_benchmark_IV_no_Q2_2023.csv"
+   outfile="&path.\July_to_june_quarterly_catch_in_numbers_and_mw_benchmark_IV_no_Q2_2024.csv"
    dbms=csv 
    replace;
 run;
@@ -1373,7 +1375,7 @@ if year lt 1974 then delete;
 run;
 
 proc export data=miiia
-   outfile="&path.\July_to_june_quarterly_catch_in_numbers_and_mean_weight_benchmark_NO_no_Q2_2023.csv"
+   outfile="&path.\July_to_june_quarterly_catch_in_numbers_and_mw_benchmark_NO_no_Q2_2024.csv"
    dbms=csv 
    replace;
 run;
