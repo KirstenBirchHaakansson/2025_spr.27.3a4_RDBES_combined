@@ -68,7 +68,7 @@ proc format;
 run;
 
 data nl1;
-set in.norwegian_length_2023;
+set in.norwegian_length_2024;
 day=date-100*floor(date/100);
 month=(date-10000*floor(date/10000)-day)/100;
 year=floor(date/10000)+2000;
@@ -85,7 +85,7 @@ drop station date icessq scm total_number_length_class;
 run;
 
 data nl2;
-set in.norwegian_alk_2023;
+set in.norwegian_alk_2024;
 day=date-100*floor(date/100);
 month=(date-10000*floor(date/10000)-day)/100;
 year=floor(date/10000)+2000;
@@ -457,7 +457,7 @@ run;
 
 data i3;
 set i2;
-do year=1974 to 2024 by 1;
+do year=1974 to 2025 by 1;
 output;
 end;
 run;
@@ -1017,14 +1017,14 @@ if p3=. then p3=newp3;
 if p4=. then p4=newp4;
 if p1=. then level=.;
 
-if year le 2021 then delete;
+if year le 2022 then delete;
 
 drop newn0-newn4 newmw0-newmw4 newml0-newml4 newmc0-newmc4 newp0-newp4 lnew;
 run;
 
 data m16;
 set out.n_samples;
-if year le 2021 then delete;
+if year le 2022 then delete;
 run;
 
 
@@ -1038,25 +1038,25 @@ by year quarter intsq;
 run; 
 
 data m17a;
-set in.mean_weight_and_n_per_kg_2022;
-if year ge 2022 then delete;
+set in.mean_weight_and_n_per_kg_2023;
+if year ge 2023 then delete;
 run;
 
-data out.mean_weight_and_n_per_kg_2023;
+data out.mean_weight_and_n_per_kg_2024;
 set m17 m17a;
 if n_samples=. then n_samples=0;
 if n1_per_kg=. then delete;
 
 run;
 
-proc export data=out.mean_weight_and_n_per_kg_2023
+proc export data=out.mean_weight_and_n_per_kg_2024
    outfile="&path.\numbers_at_age_per_kg_and_mean_weight_2023.csv"
    dbms=csv 
    replace;
 run;
 quit;
 
-proc sort data=out.mean_weight_and_n_per_kg_2023 out=m17;
+proc sort data=out.mean_weight_and_n_per_kg_2024 out=m17;
 by year quarter;
 run;
 
