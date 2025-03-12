@@ -282,7 +282,7 @@ by year intsq quarter scm;
 run;
 
 data l8;
-merge l7 out.alk23_intsq;
+merge l7 out.alk24_intsq;
 by year intsq quarter scm;
 run;
 
