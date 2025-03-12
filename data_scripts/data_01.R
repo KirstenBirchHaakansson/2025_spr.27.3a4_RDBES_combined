@@ -11,7 +11,7 @@ mkdir("data")
 bel_file <- "BE_2025 DC HAWG spr.27.4 BEL landings.xls"
 deu_file <- "DE_2025 DC HAWG spr.27.4 DE landings.xls"
 sco_file <-
-  "GB_2024 DC HAWG spr27.3a4 spr.27.67a-cf-k SCO exchange spreadsheet.xls"
+  "2025 DC HAWG spr27.3a4 spr.27.67a-cf-k SCO exchange spreadsheet.xls"
 dnk_file <- "DC_Annex_HAWG2 sprat template_DNK_2023_2025.xlsx"
 # ltu_file <- "DC_Annex_7.1.1. HAWG LTU_2020.xls" # Only herring
 nor_file <- "NO_DC_Annex_HAWG2 sprat_NOR2024.xls"
@@ -37,14 +37,20 @@ swe_cat_div <-
   rename(swe_cat_div, "Subarea" = "ICES area", "Catch_in_ton" = "Catch_in_tonnes")
 nor_cat_div <-
   read_excel(paste0("boot/data/", nor_file), sheet = 2)[, c(1:5)] # bingo
+nor_cat_div <-
+  rename(nor_cat_div, "Subarea" = "ICES area", "Catch_in_ton" = "Catch_in_tonnes")
 dnk_cat_div <-
   read_excel(paste0("boot/data/", dnk_file), sheet = 2)[, c(1:5)] # bingo
+dnk_cat_div <-
+  rename(dnk_cat_div, "Subarea" = "ICES area", "Catch_in_ton" = "Catch_in_tonnes")
 nld_cat_div <-
   read_excel(paste0("boot/data/", nld_file), sheet = 2)[, c(1:5)] # bingo
 nld_cat_div <-
   rename(nld_cat_div, "Subarea" = "ICES area", "Catch_in_ton" = "Catch_in_tonnes")
 eng_cat_div <-
   read_excel(paste0("boot/data/", eng_file), sheet = 2)[, c(1:5)] # bingo
+eng_cat_div <-
+  rename(eng_cat_div, "Subarea" = "ICES area", "Catch_in_ton" = "Catch_in_tonnes")
 # fra_cat_div <- read_excel(paste0(path, fra_file), sheet=2)[, c(1:5)] # bingo
 
 names(bel_cat_div)
@@ -67,7 +73,7 @@ cat_div <-
     nld_cat_div,
     eng_cat_div
   )
-cat_div_1 <- subset(cat_div, Year %in% c(2022, 2023, 2024))
+cat_div_1 <- subset(cat_div, Year %in% c(2023, 2024, 2025))
 
 ## correct naming of subdivision
 unique(cat_div_1$Subarea)
@@ -90,7 +96,7 @@ unique(cat_div_1$Subarea)
 names(cat_div_1) <- tolower(names(cat_div_1))
 
 write.csv(cat_div_1,
-          paste0("data/", "catches_div_2022_2024.csv"),
+          paste0("data/", "catches_div_2023_2025.csv"),
           row.names = F)
 
 
