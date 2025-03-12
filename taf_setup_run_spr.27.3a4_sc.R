@@ -39,12 +39,29 @@ draft.data(data.files = "submitted_data/DC_Annex_HAWG2 sprat template 2025 UK EW
            file = T,
            append = T)
 
-
 draft.data(data.files = "submitted_data/DC_Annex_HAWG2 sprat template_DNK_2023_2025.xlsx",
            data.scripts = NULL,
            originator = "Data submitted to HAWG",
            title = "Data from Denmark",
            period = "2024",
+           access = "Restricted",
+           file = T,
+           append = T)
+
+draft.data(data.files = "submitted_data/age_including_survey.sas7bdat",
+           data.scripts = NULL,
+           originator = "Data submitted to HAWG",
+           title = "Data from Denmark in the old SAS format",
+           period = "-2025",
+           access = "Restricted",
+           file = T,
+           append = T)
+
+draft.data(data.files = "submitted_data/length_including_survey.sas7bdat",
+           data.scripts = NULL,
+           originator = "Data submitted to HAWG",
+           title = "Data from Denmark in the old SAS format",
+           period = "-2025",
            access = "Restricted",
            file = T,
            append = T)
