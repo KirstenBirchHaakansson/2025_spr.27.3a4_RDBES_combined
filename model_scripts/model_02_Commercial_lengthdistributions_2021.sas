@@ -277,7 +277,7 @@ proc sort data=l7;
 by year intsq quarter scm;
 run;
 
-proc sort data=out.alk23_intsq;
+proc sort data=out.alk24_intsq;
 by year intsq quarter scm;
 run;
 
@@ -1050,7 +1050,7 @@ if n1_per_kg=. then delete;
 run;
 
 proc export data=out.mean_weight_and_n_per_kg_2024
-   outfile="&path.\numbers_at_age_per_kg_and_mean_weight_2023.csv"
+   outfile="&path.\numbers_at_age_per_kg_and_mean_weight_2024.csv"
    dbms=csv 
    replace;
 run;
