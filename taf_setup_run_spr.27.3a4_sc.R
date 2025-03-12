@@ -75,6 +75,15 @@ draft.data(data.files = "submitted_data/DE_2025 DC HAWG spr.27.4 DE landings.xls
            file = T,
            append = T)
 
+draft.data(data.files = "submitted_data/DE_2025 DC HAWG spr.27.4 DE landings_v2.xls",
+           data.scripts = NULL,
+           originator = "Data submitted to HAWG corrected by kibi",
+           title = "Changed year in CATCHES_(Sub)Div",
+           period = "2024",
+           access = "Restricted",
+           file = T,
+           append = T)
+
 draft.data(data.files = "submitted_data/GB_2024 DC HAWG spr27.3a4 spr.27.67a-cf-k SCO exchange spreadsheet.xls",
            data.scripts = NULL,
            originator = "Data submitted to HAWG",
