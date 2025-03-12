@@ -199,24 +199,16 @@ write.csv(new_sq,
 
 # samples ALK ----
 
-bel_samp_alk <-
-  read_excel(paste0("boot/data/", bel_file), sheet = 4) # none
-deu_samp_alk <-
-  read_excel(paste0("boot/data/", deu_file), sheet = 4) # none
-eng_samp_alk <-
-  read_excel(paste0("boot/data/", eng_file), sheet = 4) # none
-sco_samp_alk <-
-  read_excel(paste0("boot/data/", sco_file), sheet = 4) # none
 swe_samp_alk <-
   read_excel(paste0("boot/data/", swe_file), sheet = 4)[, c(1:14)] # bingo
 swe_samp_alk$date_old <- swe_samp_alk$Date
 swe_samp_alk$Date <-
   as.Date(as.character(swe_samp_alk$Date), "%y%m%d")
-nor_samp_alk <-
-  read_excel(paste0("boot/data/", nor_file), sheet = 4)[, c(1:14)] # bingo
-nor_samp_alk$date_old <- nor_samp_alk$Date
-nor_samp_alk$Date <-
-  as.Date(as.character(nor_samp_alk$Date), "%y%m%d")
+# nor_samp_alk <-
+#   read_excel(paste0("boot/data/", nor_file), sheet = 4)[, c(1:14)] # bingo
+# nor_samp_alk$date_old <- nor_samp_alk$Date
+# nor_samp_alk$Date <-
+#   as.Date(as.character(nor_samp_alk$Date), "%y%m%d")
 dnk_samp_alk <-
   read_excel(paste0("boot/data/", dnk_file), sheet = 4)[, c(1:14)] # bingo
 dnk_samp_alk$date_old <- dnk_samp_alk$Date
@@ -224,10 +216,10 @@ dnk_samp_alk$Date <-
   as.Date(as.character(dnk_samp_alk$Date), "%Y%m%d")
 
 names(swe_samp_alk)
-names(nor_samp_alk)
+# names(nor_samp_alk)
 names(dnk_samp_alk)
 
-samp_alk <- rbind(swe_samp_alk, dnk_samp_alk, nor_samp_alk)
+samp_alk <- rbind(swe_samp_alk, dnk_samp_alk)#, nor_samp_alk)
 head(samp_alk)
 
 samp_alk <-
@@ -267,12 +259,6 @@ write.csv(
 
 # samples ld ----
 
-bel_samp_ld <-
-  read_excel(paste0("boot/data/", bel_file), sheet = 5) # none
-deu_samp_ld <-
-  read_excel(paste0("boot/data/", deu_file), sheet = 5) # none
-sco_samp_ld <-
-  read_excel(paste0("boot/data/", sco_file), sheet = 5) # none
 
 swe_samp_ld <-
   read_excel(paste0("boot/data/", swe_file), sheet = 5)[, c(1:6)] # bingo
@@ -281,12 +267,12 @@ swe_samp_ld$Date <-
   as.Date(as.character(swe_samp_ld$Date), "%y%m%d")
 swe_samp_ld <- rename(swe_samp_ld, "ICESsq" = "Statrec")
 
-nor_samp_ld <-
-  read_excel(paste0("boot/data/", nor_file), sheet = 5)[, c(1:6)] # bingo
-nor_samp_ld$date_old <- nor_samp_ld$Date
-nor_samp_ld$Date <-
-  as.Date(as.character(nor_samp_ld$Date), "%y%m%d")
-nor_samp_ld <- rename(nor_samp_ld, "ICESsq" = "Statrec")
+# nor_samp_ld <-
+#   read_excel(paste0("boot/data/", nor_file), sheet = 5)[, c(1:6)] # bingo
+# nor_samp_ld$date_old <- nor_samp_ld$Date
+# nor_samp_ld$Date <-
+#   as.Date(as.character(nor_samp_ld$Date), "%y%m%d")
+# nor_samp_ld <- rename(nor_samp_ld, "ICESsq" = "Statrec")
 
 dnk_samp_ld <-
   read_excel(paste0("boot/data/", dnk_file), sheet = 5)[, c(1:6)] # bingo
@@ -296,10 +282,10 @@ dnk_samp_ld$Date <-
 dnk_samp_ld <- rename(dnk_samp_ld, "ICESsq" = "Statrec")
 
 names(swe_samp_ld)
-names(nor_samp_ld)
+# names(nor_samp_ld)
 names(dnk_samp_ld)
 
-samp_ld <- rbind(swe_samp_ld, nor_samp_ld, dnk_samp_ld)
+samp_ld <- rbind(swe_samp_ld, dnk_samp_ld) #nor_samp_ld, 
 head(samp_ld)
 
 samp_ld <-
