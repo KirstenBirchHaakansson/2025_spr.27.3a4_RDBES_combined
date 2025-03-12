@@ -1,8 +1,8 @@
 /**/
-libname in 'Q:\mynd\kibi\SC_work\spr.27.3a4\2024_spr.27.3a4_RDBES_combined\data';
-libname out 'Q:\mynd\kibi\SC_work\spr.27.3a4\2024_spr.27.3a4_RDBES_combined\model';
+libname in 'C:\Users\kibi\OneDrive - Danmarks Tekniske Universitet\stock_coord_work\spr.27.3a4\2025_spr.27.3a4_RDBES_combined\data';
+libname out 'C:\Users\kibi\OneDrive - Danmarks Tekniske Universitet\stock_coord_work\spr.27.3a4\2025_spr.27.3a4_RDBES_combined\model';
 
-%let path = Q:\mynd\kibi\SC_work\spr.27.3a4\2024_spr.27.3a4_RDBES_combined\model;
+%let path = C:\Users\kibi\OneDrive - Danmarks Tekniske Universitet\stock_coord_work\spr.27.3a4\2025_spr.27.3a4_RDBES_combined\model;
 
 proc format;
 
