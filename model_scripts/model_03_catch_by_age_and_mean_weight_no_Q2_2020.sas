@@ -355,9 +355,9 @@ if year=2020 then IV=182.654;
 if year=2021 then IV=80.761;
 if year=2022 then IV=89.721+0.384; *OK;
 
-if year=2023 then IV=91.420; * Including 2024 landings; *2025 - updated and only 2023 landings;
+if year=2023 then IV=91.420; *2025 - updated and only 2023 landings;
 
-if year=2024 then IV=84.472; *2024 run - moved to Q4 2023; *2025 - updated 2024+2025 landings;
+if year=2024 then IV=84.970 + 0.002; *2025 - updated 2024+2025 landings;
 
 if year=2025 then IV=0; *2025 run - moved to Q4 2024;
 
