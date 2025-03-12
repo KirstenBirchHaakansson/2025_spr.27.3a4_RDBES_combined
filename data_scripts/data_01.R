@@ -321,28 +321,24 @@ write.csv(
 
 # samples number ----
 
-bel_samp <-
-  read_excel(paste0("boot/data/", bel_file), sheet = 6) # none
-deu_samp <-
-  read_excel(paste0("boot/data/", deu_file), sheet = 6) # none
-sco_samp <-
-  read_excel(paste0("boot/data/", sco_file), sheet = 6) # none
+
 swe_samp <-
   read_excel(paste0("boot/data/", swe_file), sheet = 6)[, c(1:8)] # bingo
 swe_samp <- rename(swe_samp, "Catch_in_ton" = "Catch_in_tonnes")
-nor_samp <-
-  read_excel(paste0("boot/data/", nor_file), sheet = 6)[, c(1:8)] # bingo
+# nor_samp <-
+#   read_excel(paste0("boot/data/", nor_file), sheet = 6)[, c(1:8)] # bingo
 dnk_samp <-
   read_excel(paste0("boot/data/", dnk_file), sheet = 6)[, c(1:8)] # bingo
+dnk_samp <- rename(dnk_samp, "Catch_in_ton" = "Catch_in_tonnes")
 
 names(swe_samp)
 names(dnk_samp)
-names(nor_samp)
+# names(nor_samp)
 
-samp <- rbind(swe_samp, dnk_samp, nor_samp)
+samp <- rbind(swe_samp, dnk_samp) #, nor_samp)
 head(samp)
 
-samp_1 <- subset(samp, Year %in% c(2022, 2023, 2024))
+samp_1 <- subset(samp, Year %in% c(2023, 2024, 2025))
 
 ## correct naming of subdivision
 unique(samp_1$Subarea)
@@ -364,5 +360,5 @@ unique(samp_1$Subarea)
 names(samp_1) <- tolower(names(samp_1))
 
 write.csv(samp_1,
-          paste0("data/", "no_samples_2022_2024.csv"),
+          paste0("data/", "no_samples_2023_2025.csv"),
           row.names = F)
