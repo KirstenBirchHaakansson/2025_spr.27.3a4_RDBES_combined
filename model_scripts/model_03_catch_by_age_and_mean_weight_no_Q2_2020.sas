@@ -194,6 +194,10 @@ proc sort data=a2;
 by year quarter intsq;
 run;
 
+data out.y_q_sq;
+set a2;
+run;
+
 proc sort data=out.mean_weight_and_n_per_kg_2024 out=a3;
 by year quarter intsq;
 run;
@@ -1121,13 +1125,15 @@ by div year quarter;
 output out=m27 sum()= mean(wmw1)=w2mw1 mean(wmw2)=w2mw2 mean(wmw3)=w2mw3 mean(wmw4)=w2mw4;
 run;
 
+*Opdater nedestående år til sidste år i tidsserien, så indeværende år;
+
 data m28;
 set m27;
-if year ne 2024 then mw0=wmw0/n0;
-if year ne 2024 then mw1=wmw1/n1;
-if year ne 2024 then mw2=wmw2/n2;
-if year ne 2024 then mw3=wmw3/n3;
-if year ne 2024 then mw4=wmw4/n4;
+if year ne 2025 then mw0=wmw0/n0; *Her gives et gennemsnit over div, year og kvartal - undtagen for det specificerede år, der ende med at få et gennemsnit over år og div;
+if year ne 2025 then mw1=wmw1/n1;
+if year ne 2025 then mw2=wmw2/n2;
+if year ne 2025 then mw3=wmw3/n3;
+if year ne 2025 then mw4=wmw4/n4;
 if quarter=2 then mw1=w2mw1;
 if quarter=2 then mw2=w2mw2;
 if quarter=2 then mw3=w2mw3;
@@ -1280,10 +1286,10 @@ run;
 
 data m28;
 set m27;
-if year lt 2023 then mw0=wmw0/n0;
-if year lt 2023 then mw1=wmw1/n1;
-if year lt 2023 then mw2=wmw2/n2;
-if year lt 2023 then mw3=wmw3/n3;
+if year lt 2026 then mw0=wmw0/n0;
+if year lt 2026 then mw1=wmw1/n1;
+if year lt 2026 then mw2=wmw2/n2;
+if year lt 2026 then mw3=wmw3/n3;
 if quarter in (1,2) then  mw0=wmw0/n0;
 if quarter in (1,2) then  mw1=wmw1/n1;
 if quarter in (1,2) then  mw2=wmw2/n2;
