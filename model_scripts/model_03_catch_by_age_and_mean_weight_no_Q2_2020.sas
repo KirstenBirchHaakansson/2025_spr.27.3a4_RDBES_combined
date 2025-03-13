@@ -168,6 +168,9 @@ intsq='    ';
 intsq=square;
 ton=catch_in_ton;
 if country in ('DEN','DK') and year lt 2019 then delete;
+
+if intsq = '31F0' and year ge 2023 then intsq = '31F1';
+
 ****************REMOVE IN 2024************************;
 ****************Temporary fix for low catches and no samples**********;
 if year=2025 and quarter=1 then do;
@@ -192,10 +195,6 @@ run;
 
 proc sort data=a2;
 by year quarter intsq;
-run;
-
-data out.y_q_sq;
-set a2;
 run;
 
 proc sort data=out.mean_weight_and_n_per_kg_2024 out=a3;
@@ -223,6 +222,12 @@ data a4;
 merge a2 a3;
 by year quarter intsq;
 run;
+
+proc sql;
+create table out.y_q_sq as
+select distinct year, quarter, intsq, ton, area3, area2, n0_per_kg
+from a4;
+
 
 proc sort data=a4 out=x4;
 by quarter year;
