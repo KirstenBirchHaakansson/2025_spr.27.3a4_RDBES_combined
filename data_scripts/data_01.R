@@ -100,6 +100,32 @@ write.csv(cat_div_1,
           row.names = F)
 
 # Check figures against submissions
+## combine new data with old
+
+old_div <-
+  read.csv(
+    paste0(
+      "boot/data/data_from_last_year/",
+      "catches_div_2019_2024.csv"
+    ),
+    sep = ";"
+  )
+names(old_div) <- tolower(names(old_div))
+unique(old_div$year)
+
+distinct(cat_div_1, country, year) # Only Danish data from 2023 and 2025
+distinct(old_div, country, year)
+
+old_div_1 <-
+  subset(old_div,!(country == "DK" & year %in% c(2023, 2024)))
+distinct(old_div_1, country, year)
+
+new_div <- rbind(old_div_1, cat_div_1)
+
+write.csv(new_div,
+          paste0("data/", "catches_div_2019_2025.csv"),
+          row.names = F)
+
 
 # Catch square ----
 
